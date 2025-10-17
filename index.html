@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Macrobot — Design • Development • Automation</title>
+  <meta name="description" content="Macrobot blends royal aesthetics with futuristic engineering — branding, web/app development, AI integration, and automation consulting." />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0B132B;            /* Deep Royal Blue */
+      --bg-2:#151C3B;          /* Deeper section */
+      --ink:#ffffff;           /* Text white */
+      --muted:#c7c9d3;         /* Muted text */
+      --royal:#5C33F6;         /* Futuristic Violet */
+      --gold:#C5A44D;          /* Mughal Gold */
+      --emerald:#00A676;       /* Emerald hint */
+      --card:#10162e;          /* Card background */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* --- NAV --- */
+    .nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(11,19,43,.94) 0%, rgba(11,19,43,.70) 100%);backdrop-filter: blur(8px);border-bottom:1px solid rgba(197,164,77,.15)}
+    .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 22px;max-width:1180px;margin:0 auto}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #FFECA8 0 12px, var(--gold) 13px, #7a5d1d 100%);box-shadow:0 0 0 2px #d8c07c33, 0 4px 14px #000}
+    .brand h1{font-family:Cinzel,serif;letter-spacing:.5px;font-weight:800;font-size:18px;margin:0}
+    .menu{display:flex;gap:18px;flex-wrap:wrap}
+    .menu a{padding:8px 12px;border-radius:999px;opacity:.92}
+    .menu a:hover{background:#ffffff14;opacity:1}
+    .cta{display:flex;gap:10px}
+    .btn{border:1px solid #ffffff22;padding:10px 16px;border-radius:999px;font-weight:600}
+    .btn.gold{border-color:transparent;background:linear-gradient(135deg,var(--gold),#e1cc86);color:#1a1200}
+    .btn.gold:hover{filter:brightness(1.05)}
+
+    /* --- HERO --- */
+    .hero{position:relative;overflow:hidden}
+    .hero .wrap{max-width:1180px;margin:0 auto;padding:94px 22px 110px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .mughal-bg{position:absolute;inset:-20% -10%;background-image:radial-gradient(1200px 1200px at 50% 10%, #3b2bb650 0%, transparent 60%),
+      radial-gradient(40% 60% at 10% 80%, #1b1940 0%, transparent 60%),
+      radial-gradient(40% 60% at 90% 80%, #1b1940 0%, transparent 60%),
+      repeating-conic-gradient(from 0deg, #ffffff07 0 20deg, transparent 20deg 40deg);
+      filter:saturate(115%);}
+    .hero-card{position:relative;padding:34px;border:1px solid #ffffff18;border-radius:var(--radius);background:linear-gradient(180deg,#0c1433cc,#0c1433a0);box-shadow:var(--shadow)}
+    .eyebrow{display:inline-block;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#e9e0bb;background: #caa64d22;border:1px solid #caa64d55;border-radius:999px;padding:6px 12px;margin-bottom:16px}
+    .hero h2{font-family:Cinzel,serif;font-size:48px;line-height:1.05;margin:0 0 16px}
+    .hero p{color:var(--muted);margin:0 0 22px;font-size:17px}
+    .action{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    .ghost{border:1px solid #ffffff33}
+
+    .orb{aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 30% 30%, #8e7af6, #5332f5 45%, #2b1e7a 60%, transparent 61%);filter:blur(.2px);box-shadow:inset 0 0 80px #fff2;animation:float 10s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+    /* --- SECTION WRAPPER --- */
+    section{scroll-margin-top:90px}
+    .section{max-width:1180px;margin:0 auto;padding:90px 22px}
+    .title{font-family:Cinzel,serif;font-weight:800;font-size:34px;margin:0 0 12px}
+    .sub{color:var(--muted);margin:0 0 26px}
+
+    /* --- ABOUT --- */
+    .about{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px}
+    .card{background:linear-gradient(180deg,#0f1737,#0b132b);border:1px solid #ffffff14;border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+    .profile{display:flex;align-items:center;gap:18px}
+    .avatar{width:108px;height:108px;border-radius:50%;border:3px solid #e6d38c;box-shadow:0 0 0 6px #e6d38c33, 0 6px 20px #000;object-fit:cover}
+
+    /* --- SERVICES --- */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{padding:22px;border:1px solid #ffffff12;border-radius:var(--radius);background:linear-gradient(180deg,#11193b,#0b132b);transition:.25s transform, .25s box-shadow}
+    .service:hover{transform:translateY(-4px);box-shadow:0 10px 22px #0008}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #ffffff20;background:#ffffff10;margin-bottom:10px;font-weight:700;color:#e9e0bb}
+    .service h3{margin:8px 0 8px;font-size:18px}
+    .service p{margin:0;color:var(--muted)}
+
+    /* --- PORTFOLIO --- */
+    .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .work{position:relative;border-radius:14px;overflow:hidden;border:1px solid #ffffff16;background:#0e1534}
+    .work .cap{position:absolute;inset:auto 0 0 0;padding:12px;background:linear-gradient(180deg,transparent,#0009);text-align:center}
+
+    /* --- PRESS --- */
+    .press{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:center}
+    .press img{filter:grayscale(100%);opacity:.6;transition:.25s}
+    .press img:hover{filter:none;opacity:1}
+
+    /* --- OFFER --- */
+    .offer{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+    .offer input{background:#0f1737;border:1px solid #ffffff22;border-radius:10px;color:#fff;padding:12px 14px;min-width:240px}
+    .note{color:#e6d38c}
+
+    /* --- CONTACT --- */
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    form input, form select, form textarea{background:#0f1737;border:1px solid #ffffff22;border-radius:10px;color:#fff;padding:12px 14px}
+    form textarea{grid-column:1/-1;min-height:140px}
+
+    /* --- FOOTER --- */
+    footer{border-top:1px solid #ffffff12;background:linear-gradient(180deg,#0b132b,#0a1229);padding:34px 22px;color:#bfc3d4}
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 980px){
+      .hero .wrap{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .portfolio{grid-template-columns:1fr 1fr}
+      .press{grid-template-columns:1fr 1fr 1fr}
+    }
+    @media (max-width: 620px){
+      .grid,.portfolio{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Macrobot</h1>
+      </div>
+      <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#press">Press</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="cta">
+        <a class="btn" href="#contact">Let's talk</a>
+        <a class="btn gold" href="#offer">Get Offer</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <div class="mughal-bg"></div>
+    <div class="wrap">
+      <div class="hero-card">
+        <span class="eyebrow">Royal • Futuristic • Precise</span>
+        <h2>Design. Develop. Dominate.</h2>
+        <p>Macrobot blends Mughal elegance with modern engineering to craft brands, products, and intelligent systems that stand the test of time.</p>
+        <div class="action">
+          <a class="btn gold" href="#services">Explore services</a>
+          <a class="btn ghost" href="#work">See our work</a>
+        </div>
+      </div>
+      <div>
+        <div class="orb"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <h3 class="title">The Vision Behind Macrobot</h3>
+    <p class="sub">Founded by <strong>Adithya Prahalad</strong>, Macrobot unites design, development, and automation to ship world‑class products.</p>
+    <div class="about">
+      <div class="card">
+        <div class="profile">
+          <img class="avatar" src="https://images.unsplash.com/photo-1603415526960-f7e0328d13fb?q=80&w=600&auto=format&fit=crop" alt="Founder portrait"/>
+          <div>
+            <div class="pill">Founder / CEO</div>
+            <h4 style="margin:6px 0 6px">Adithya Prahalad</h4>
+            <p style="margin:0;color:var(--muted)">Human‑centered design, clean engineering, and automation at scale.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pill">Our Core</div>
+        <ul style="margin:8px 0 0 18px;color:var(--muted);line-height:1.8">
+          <li><strong>Vision:</strong> The world’s most refined design & development platform.</li>
+          <li><strong>Mission:</strong> Build futuristic, user‑centric solutions that ship.</li>
+          <li><strong>Values:</strong> Consistency • Innovation • Royal Precision.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section" style="background:linear-gradient(180deg,var(--bg-2),var(--bg))">
+    <h3 class="title">Our Expertise</h3>
+    <p class="sub">Everything you need from brand to build — delivered with a royal finish.</p>
+    <div class="grid">
+      <div class="service">
+        <div class="pill">Branding</div>
+        <h3>Identity Systems</h3>
+        <p>Timeless logos, typography, and visual systems that scale.</p>
+      </div>
+      <div class="service">
+        <div class="pill">Design</div>
+        <h3>UI / UX</h3>
+        <p>Interfaces engineered for clarity, beauty, and conversion.</p>
+      </div>
+      <div class="service">
+        <div class="pill">Engineering</div>
+        <h3>Web & Apps</h3>
+        <p>Modern, fast, and secure applications built for growth.</p>
+      </div>
+      <div class="service">
+        <div class="pill">AI</div>
+        <h3>Intelligent Systems</h3>
+        <p>Custom AI, data pipelines, and automation for real impact.</p>
+      </div>
+      <div class="service">
+        <div class="pill">Automation</div>
+        <h3>Robotics & IoT</h3>
+        <p>Embedded systems that sense, decide, and act reliably.</p>
+      </div>
+      <div class="service">
+        <div class="pill">Pitch</div>
+        <h3>Investor Decks</h3>
+        <p>Magnetic storytelling and visuals that close deals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="work" class="section">
+    <h3 class="title">Our Royal Creations</h3>
+    <p class="sub">Selected work and concept studies. (More on request.)</p>
+    <div class="portfolio">
+      <figure class="work">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600&auto=format&fit=crop" alt="Dashboard UI"/>
+        <figcaption class="cap">Analytics Dashboard — Fintech</figcaption>
+      </figure>
+      <figure class="work">
+        <img src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?q=80&w=1600&auto=format&fit=crop" alt="Brand system"/>
+        <figcaption class="cap">Brand & Website — Studio</figcaption>
+      </figure>
+      <figure class="work">
+        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop" alt="App UI"/>
+        <figcaption class="cap">Mobile App — Productivity</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PRESS / PARTNERS -->
+  <section id="press" class="section" style="background:linear-gradient(180deg,var(--bg-2),#0b132b)">
+    <h3 class="title">Discover us on</h3>
+    <p class="sub">A selection of platforms and partners.</p>
+    <div class="press">
+      <img alt="Friday" src="https://dummyimage.com/300x120/ffffff/000000&text=FRIDAY"/>
+      <img alt="DubaiEye" src="https://dummyimage.com/300x120/ffffff/000000&text=Dubai+Eye"/>
+      <img alt="Talk" src="https://dummyimage.com/300x120/ffffff/000000&text=Talk"/>
+      <img alt="UAE News" src="https://dummyimage.com/300x120/ffffff/000000&text=UAE+News"/>
+      <img alt="Rida" src="https://dummyimage.com/300x120/ffffff/000000&text=RIDA"/>
+    </div>
+  </section>
+
+  <!-- OFFER / PROMO -->
+  <section id="offer" class="section">
+    <h3 class="title">Exclusive Offer</h3>
+    <p class="sub">Subscribed to our YouTube or Instagram? Use your code below.</p>
+    <div class="offer">
+      <input id="code" type="text" placeholder="Enter promo code e.g. ROYALSUB15"/>
+      <button class="btn gold" id="apply">Apply Code</button>
+      <span id="result" class="note"></span>
+    </div>
+    <p style="margin-top:10px;color:var(--muted);font-size:14px">Active codes: <strong>ROYALSUB10</strong> (10% off), <strong>ROYALSUB15</strong> (15% off).</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section" style="background:linear-gradient(180deg,var(--bg-2),var(--bg))">
+    <h3 class="title">Let’s Build Your Empire</h3>
+    <p class="sub">Tell us about your idea. We’ll reply within 24 hours.</p>
+    <form action="mailto:info@macrobot.com" method="post" enctype="text/plain">
+      <input name="name" placeholder="Your name" required />
+      <input name="email" placeholder="Email" type="email" required />
+      <select name="type" required>
+        <option value="" disabled selected>Project type</option>
+        <option>Branding</option>
+        <option>Web / App</option>
+        <option>AI / Automation</option>
+        <option>Consulting</option>
+        <option>Investor Deck</option>
+      </select>
+      <input name="budget" placeholder="Estimated budget (optional)" />
+      <textarea name="message" placeholder="Tell us about your project…" required></textarea>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button class="btn gold" type="submit">Send message</button>
+        <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">View GitHub</a>
+      </div>
+    </form>
+  </section>
+
+  <footer>
+    <div class="section" style="padding:0;max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© <span id="year"></span> Macrobot. Royal aesthetics. Futuristic engineering.</div>
+      <div>Edinburgh, Scotland • <a href="mailto:info@macrobot.com">info@macrobot.com</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Promo code logic
+    (function(){
+      const codes = { ROYALSUB10: 10, ROYALSUB15: 15 };
+      const inp = document.getElementById('code');
+      const btn = document.getElementById('apply');
+      const out = document.getElementById('result');
+      if(btn){
+        btn.addEventListener('click', function(){
+          const key = (inp.value||'').trim().toUpperCase();
+          if(codes[key]){
+            out.textContent = `Success — ${codes[key]}% discount will be applied to your quote.`;
+          } else if(key){
+            out.textContent = 'Invalid or expired code.';
+          } else {
+            out.textContent = '';
+          }
+        });
+      }
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
