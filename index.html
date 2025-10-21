@@ -1,136 +1,115 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Macrobot — Design · Develop · Deliver</title>
-  <meta name="description" content="Macrobot is a design & development studio delivering performant web/apps, automation & AI integration, and technical consulting." />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="logo.png">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <title>Macrobot — Engineering Modern Intelligence</title>
+  <meta name="description" content="Macrobot delivers intelligent engineering — web & app development, automation, and design — led by Adithya Prahalad. We craft solutions that scale." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#0E1117;
-      --surface:#141922;
-      --ink:#E5E7EB;
-      --muted:#9CA3AF;
-      --line:#232a36;
-      --blue:#3B82F6;
-      --blue-600:#2563EB;
-      --green:#22c55e;
-      --radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --ink: #e6edf3;
+      --muted: #8b949e;
+      --accent: #3b82f6;
+      --accent2: #60a5fa;
+      --radius: 14px;
+      --shadow: 0 10px 35px rgba(0,0,0,.5);
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;scroll-behavior:smooth}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;scroll-behavior:smooth;}
 
-    /* NAV */
-    .nav{position:sticky;top:0;z-index:50;background:rgba(14,17,23,.8);backdrop-filter: blur(10px);border-bottom:1px solid var(--line)}
-    .nav .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:36px;height:36px;border-radius:6px;object-fit:contain;box-shadow:0 0 10px #0007}
-    .title{font-family:Poppins,Inter,sans-serif;font-weight:700;letter-spacing:.3px}
-    .menu{display:flex;gap:18px;flex-wrap:wrap}
-    .menu a{padding:8px 10px;border-radius:999px;color:var(--muted)}
-    .menu a:hover{background:#ffffff10;color:#fff}
-    .cta{display:flex;gap:10px}
-    .btn{border:1px solid #ffffff22;padding:10px 14px;border-radius:999px;font-weight:600}
-    .btn.primary{border-color:transparent;background:linear-gradient(135deg,var(--blue),var(--blue-600));color:#fff}
-    .btn.primary:hover{filter:brightness(1.06)}
+    /* --- NAV --- */
+    nav{position:sticky;top:0;z-index:99;backdrop-filter:blur(10px);background:rgba(13,17,23,0.8);border-bottom:1px solid #1f2937;}
+    .nav-container{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
+    .brand{display:flex;align-items:center;gap:10px;}
+    .brand img{width:40px;height:40px;object-fit:contain;border-radius:8px;}
+    .brand span{font-family:Poppins,sans-serif;font-weight:700;font-size:1.1rem;}
+    .menu{display:flex;gap:20px;flex-wrap:wrap;}
+    .menu a{color:var(--muted);text-decoration:none;font-weight:500;padding:6px 10px;border-radius:20px;transition:.25s;}
+    .menu a:hover{color:var(--ink);background:#ffffff15;}
+    .cta{display:flex;gap:10px;}
+    .btn{padding:10px 16px;border-radius:999px;font-weight:600;text-decoration:none;display:inline-block;}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;box-shadow:0 0 15px #3b82f640;}
+    .btn.primary:hover{filter:brightness(1.1);}
+    .btn.outline{border:1px solid var(--accent);color:var(--accent);}
+    .btn.outline:hover{background:var(--accent);color:white;}
 
-    /* HERO */
-    header{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;padding:84px 0}
-    .card{background:linear-gradient(180deg,#171d29,#121722);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
-    .eyebrow{display:inline-block;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#cdd7ff;background:#32406a33;border:1px solid #4a5a8f55;border-radius:999px;padding:6px 12px;margin-bottom:14px}
-    h1{font-family:Poppins,Inter,sans-serif;font-size:46px;line-height:1.07;margin:0 0 14px}
-    .lead{color:var(--muted);margin:0 0 18px}
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .orb{aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 35% 30%, #9aaefb, #4f7cf8 50%, #2a3770 70%, transparent 71%);filter:blur(.2px)}
-    .bg-rays{position:absolute;inset:-20% -10%;pointer-events:none;background:
-      radial-gradient(1000px 1000px at 70% 15%, rgba(79,124,248,.22), transparent 60%),
-      radial-gradient(800px 800px at 20% 80%, rgba(88,113,207,.12), transparent 60%),
-      repeating-conic-gradient(from 0deg, rgba(255,255,255,.06) 0 18deg, transparent 18deg 36deg);
-      opacity:.3}
+    /* --- HERO --- */
+    header{padding:120px 0;background:radial-gradient(ellipse at 60% 20%, #1e2a41, transparent 70%);}
+    .hero{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px;padding:0 20px;}
+    .hero h1{font-size:2.9rem;font-family:Poppins,sans-serif;line-height:1.1;}
+    .hero p{color:var(--muted);margin:20px 0 30px;font-size:1.05rem;}
+    .hero .actions{display:flex;gap:16px;flex-wrap:wrap;}
+    .orb{width:380px;height:380px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#4f7cf8,#1d2d63);filter:blur(.3px);margin:auto;}
+    
+    /* --- SECTION --- */
+    section{padding:90px 0;border-bottom:1px solid #1e293b;}
+    .wrap{max-width:1100px;margin:auto;padding:0 20px;}
+    h2{font-family:Poppins,sans-serif;font-weight:700;font-size:2rem;margin-bottom:8px;}
+    p.sub{color:var(--muted);margin-bottom:32px;}
 
-    /* SECTION */
-    section{scroll-margin-top:84px}
-    .section{padding:80px 0;border-bottom:1px solid var(--line)}
-    .h2{font-family:Poppins,Inter,sans-serif;font-weight:700;font-size:28px;margin:0 0 10px}
-    .sub{color:var(--muted);margin:0 0 24px}
+    /* --- ABOUT --- */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .card{background:var(--surface);padding:24px;border-radius:var(--radius);box-shadow:var(--shadow);}
+    .profile{display:flex;align-items:center;gap:18px;}
+    .profile img{width:90px;height:90px;border-radius:50%;border:2px solid var(--accent);}
+    .principles li{margin-bottom:10px;color:var(--muted);}
+    .principles strong{color:var(--ink);}
 
-    /* ABOUT */
-    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}
-    .kard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
-    .profile{display:flex;gap:16px;align-items:center}
-    .avatar{width:90px;height:90px;border-radius:50%;object-fit:cover;border:2px solid #4f7cf8}
+    /* --- SERVICES --- */
+    .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+    .service{background:var(--surface);padding:24px;border-radius:var(--radius);transition:.3s;box-shadow:var(--shadow);}
+    .service:hover{transform:translateY(-4px);box-shadow:0 14px 26px rgba(0,0,0,.5);}
+    .service h3{font-family:Poppins,sans-serif;margin-bottom:8px;}
+    .service p{color:var(--muted);}
 
-    /* SERVICES */
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .service{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;transition:.25s transform,.25s box-shadow}
-    .service:hover{transform:translateY(-3px);box-shadow:0 14px 24px #0007}
-    .service h3{margin:10px 0 8px}
-    .service p{margin:0;color:var(--muted)}
+    /* --- PROJECTS --- */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+    .work{border-radius:var(--radius);overflow:hidden;position:relative;background:#0f1420;}
+    .work img{width:100%;height:230px;object-fit:cover;}
+    .work .caption{position:absolute;bottom:0;left:0;right:0;padding:10px 14px;background:linear-gradient(180deg,transparent,#0009);color:#fff;font-size:.95rem;}
 
-    /* PROJECTS */
-    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .work{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0f1420}
-    .work .cap{position:absolute;inset:auto 0 0 0;padding:12px;background:linear-gradient(180deg,transparent,#0009);text-align:center}
+    /* --- STACK --- */
+    .stack{display:flex;flex-wrap:wrap;gap:10px;}
+    .chip{padding:8px 14px;border-radius:999px;background:#1e293b;color:#cbd5e1;font-weight:500;font-size:.9rem;transition:.25s;}
+    .chip:hover{background:var(--accent);color:white;}
 
-    /* STACK */
-    .stack{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{border:1px solid var(--line);background:#151a24;border-radius:10px;padding:8px 10px;color:#cbd5e1}
+    /* --- CONTACT --- */
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    form input,form select,form textarea{background:#101623;border:1px solid #2b3544;border-radius:10px;color:#fff;padding:12px 14px;}
+    form textarea{grid-column:1/-1;min-height:140px;}
+    .footer{text-align:center;color:#8b949e;padding:40px 10px 30px;font-size:.9rem;}
 
-    /* ESTIMATOR */
-    .est{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .est input,.est select{background:#101623;border:1px solid var(--line);border-radius:10px;color:#fff;padding:12px 14px}
-    .est .out{grid-column:1/-1;background:#0f172a;border:1px dashed #2b3a55;border-radius:12px;padding:14px}
-    .ok{color:var(--green);font-weight:700}
-
-    /* CONTACT */
-    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    form input, form select, form textarea{background:#101623;border:1px solid var(--line);border-radius:10px;color:#fff;padding:12px 14px}
-    form textarea{grid-column:1/-1;min-height:140px}
-    .footer{padding:26px 0;color:#9CA3AF;text-align:center}
-
-    /* RESPONSIVE */
-    @media (max-width: 980px){
-      .hero{grid-template-columns:1fr}
-      .about{grid-template-columns:1fr}
-      .grid3{grid-template-columns:1fr 1fr}
-      .grid2{grid-template-columns:1fr}
-      .est{grid-template-columns:1fr}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .orb{width:280px;height:280px;}
+      .about-grid{grid-template-columns:1fr;}
     }
-    @media (max-width:620px){.menu{display:none}}
   </style>
 </head>
-
 <body>
 
   <!-- NAV -->
-  <nav class="nav">
-    <div class="wrap inner">
+  <nav>
+    <div class="nav-container">
       <div class="brand">
-        <img src="logo.png" alt="Macrobot Logo" class="logo">
-        <div class="title">Macrobot</div>
+        <img src="logo.png" alt="Macrobot logo">
+        <span>Macrobot</span>
       </div>
       <div class="menu">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
-        <a href="#work">Projects</a>
+        <a href="#projects">Projects</a>
         <a href="#stack">Stack</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="cta">
-        <a class="btn" href="#contact">Let’s talk</a>
+        <a class="btn outline" href="#contact">Let’s Talk</a>
         <a class="btn primary" href="#estimate">Get Estimate</a>
       </div>
     </div>
@@ -138,15 +117,14 @@
 
   <!-- HERO -->
   <header id="home">
-    <div class="bg-rays"></div>
-    <div class="wrap hero">
-      <div class="card">
-        <div class="eyebrow">DESIGN · DEVELOPMENT · AUTOMATION</div>
+    <div class="hero">
+      <div>
+        <div class="eyebrow" style="font-weight:700;color:#aabfff;margin-bottom:12px;">DESIGN · DEVELOPMENT · AUTOMATION</div>
         <h1>Build intelligent digital products with confidence.</h1>
-        <p class="lead">We ship fast, scalable, user-focused software — from product design to web/apps, automation and AI integration.</p>
+        <p>We deliver scalable, user-focused software — from design to web & app development, automation, and AI integration.</p>
         <div class="actions">
-          <a class="btn primary" href="#services">Explore services</a>
-          <a class="btn" href="#work">See projects</a>
+          <a class="btn primary" href="#services">Explore Services</a>
+          <a class="btn outline" href="#projects">See Projects</a>
         </div>
       </div>
       <div><div class="orb"></div></div>
@@ -154,26 +132,26 @@
   </header>
 
   <!-- ABOUT -->
-  <section id="about" class="section">
+  <section id="about">
     <div class="wrap">
-      <h2 class="h2">About Macrobot</h2>
-      <p class="sub">Founded by <strong>Adithya Prahalad</strong>, Macrobot blends engineering and design to deliver meaningful business outcomes.</p>
-      <div class="about">
-        <div class="kard">
+      <h2>About Macrobot</h2>
+      <p class="sub">Founded by <strong>Adithya Prahalad</strong>, Macrobot unites design, development, and automation to deliver modern digital experiences.</p>
+      <div class="about-grid">
+        <div class="card">
           <div class="profile">
-            <img class="avatar" src="logo.png" alt="Adithya Prahalad">
+            <img src="logo.png" alt="Adithya Prahalad">
             <div>
-              <div style="font-weight:700;margin-bottom:6px">Adithya Prahalad — Founder</div>
-              <div style="color:var(--muted)">Software development, automation, and product strategy.</div>
+              <h4>Adithya Prahalad — Founder</h4>
+              <p style="color:var(--muted)">Software development, automation, and product strategy.</p>
             </div>
           </div>
         </div>
-        <div class="kard">
-          <div style="font-weight:700;margin-bottom:6px">Principles</div>
-          <ul style="margin:8px 0 0 18px;color:var(--muted);line-height:1.8">
-            <li><strong>Precision:</strong> clean architecture and code quality.</li>
-            <li><strong>Clarity:</strong> transparent timelines and communication.</li>
-            <li><strong>Impact:</strong> design that converts, performance that scales.</li>
+        <div class="card">
+          <h4 style="margin-bottom:12px;">Core Principles</h4>
+          <ul class="principles">
+            <li><strong>Precision:</strong> Clean architecture and engineering discipline.</li>
+            <li><strong>Clarity:</strong> Transparent timelines and open communication.</li>
+            <li><strong>Impact:</strong> Results-driven design that converts and scales.</li>
           </ul>
         </div>
       </div>
@@ -181,66 +159,70 @@
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="section">
+  <section id="services">
     <div class="wrap">
-      <h2 class="h2">Services</h2>
-      <p class="sub">End-to-end product design and development for startups and teams.</p>
+      <h2>Services</h2>
+      <p class="sub">Our expertise covers end-to-end product creation and scaling.</p>
       <div class="grid3">
-        <div class="service"><h3>Web & App Development</h3><p>Fast, secure, and maintainable applications with modern tooling.</p></div>
-        <div class="service"><h3>Automation & AI Integration</h3><p>Workflow automation, data pipelines, and ML-assisted features.</p></div>
-        <div class="service"><h3>Product Design (UI/UX)</h3><p>Human-centered interfaces that improve conversion and retention.</p></div>
-        <div class="service"><h3>Technical Consulting</h3><p>Architecture reviews, performance audits, and delivery planning.</p></div>
-        <div class="service"><h3>Data Dashboards</h3><p>Clear, actionable analytics for operations and finance teams.</p></div>
-        <div class="service"><h3>Investor Pitch Support</h3><p>Concise narratives and visuals that help you raise with confidence.</p></div>
+        <div class="service"><h3>Web & App Development</h3><p>Responsive, fast, and maintainable applications built with modern tech.</p></div>
+        <div class="service"><h3>Automation & AI Integration</h3><p>Streamline your workflow with Python automation, APIs, and AI logic.</p></div>
+        <div class="service"><h3>UI/UX Design</h3><p>Clean, minimal, and engaging interfaces crafted for clarity and conversion.</p></div>
+        <div class="service"><h3>Data Systems</h3><p>Reliable backend solutions for analytics, dashboards, and cloud architecture.</p></div>
+        <div class="service"><h3>Consulting</h3><p>Technology strategy, scalability reviews, and performance audits.</p></div>
+        <div class="service"><h3>Investor Pitch & Product Strategy</h3><p>Structured product narratives and demos to help secure funding.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <h2>Featured Projects</h2>
+      <p class="sub">A glimpse at some of our most impactful work.</p>
+      <div class="projects">
+        <div class="work"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600&auto=format&fit=crop" alt="Project 1"><div class="caption">Custom Analytics Dashboard</div></div>
+        <div class="work"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop" alt="Project 2"><div class="caption">API-driven Web Platform</div></div>
+        <div class="work"><img src="https://images.unsplash.com/photo-1581093588401-22d80b1d9673?q=80&w=1600&auto=format&fit=crop" alt="Project 3"><div class="caption">AI Automation Suite</div></div>
       </div>
     </div>
   </section>
 
   <!-- STACK -->
-  <section id="stack" class="section">
+  <section id="stack">
     <div class="wrap">
-      <h2 class="h2">Tech Stack</h2>
-      <p class="sub">We choose tools for reliability, performance, and team fit.</p>
+      <h2>Tech Stack</h2>
+      <p class="sub">Reliable, proven, and future-ready technologies we use.</p>
       <div class="stack">
-        <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Node.js</span>
-        <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span>
-        <span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">AWS</span>
-        <span class="chip">Tailwind</span><span class="chip">Figma</span>
+        <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">FastAPI</span><span class="chip">Docker</span><span class="chip">AWS</span><span class="chip">CI/CD</span><span class="chip">Figma</span>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="section">
+  <section id="contact">
     <div class="wrap">
-      <h2 class="h2">Contact</h2>
-      <p class="sub">Tell us about your project. We reply within one business day.</p>
+      <h2>Contact</h2>
+      <p class="sub">Let’s collaborate — tell us about your idea or project.</p>
       <form action="mailto:contact@macrobot.com" method="post" enctype="text/plain">
         <input name="name" placeholder="Your name" required />
-        <input name="email" placeholder="Email" type="email" required />
-        <select name="type" required>
-          <option value="" disabled selected>Project type</option>
-          <option>Web/App</option>
+        <input name="email" placeholder="Your email" type="email" required />
+        <select name="service" required>
+          <option value="" disabled selected>Service interested in</option>
+          <option>Web/App Development</option>
           <option>Automation/AI</option>
-          <option>Dashboard</option>
           <option>Consulting</option>
         </select>
         <input name="company" placeholder="Company (optional)" />
-        <textarea name="message" placeholder="Short brief…" required></textarea>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-          <button class="btn primary" type="submit">Send message</button>
-          <a class="btn" href="https://github.com/AdithyaPrahalad" target="_blank">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a>
-        </div>
+        <textarea name="message" placeholder="Project details…" required></textarea>
+        <button class="btn primary" type="submit">Send Message</button>
       </form>
     </div>
   </section>
 
-  <div class="footer">© <span id="year"></span> Macrobot. All rights reserved.</div>
+  <footer class="footer">© <span id="year"></span> Macrobot. All rights reserved.</footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
