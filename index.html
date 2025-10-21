@@ -5,19 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Macrobot — Design · Develop · Deliver</title>
   <meta name="description" content="Macrobot is a design & development studio delivering performant web/apps, automation & AI integration, and technical consulting." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#0E1117;        /* background */
-      --surface:#141922;   /* cards */
-      --ink:#E5E7EB;       /* text */
-      --muted:#9CA3AF;     /* secondary text */
-      --line:#232a36;      /* borders */
-      --blue:#3B82F6;      /* accent */
-      --blue-600:#2563EB;  /* button */
+      --bg:#0E1117;
+      --surface:#141922;
+      --ink:#E5E7EB;
+      --muted:#9CA3AF;
+      --line:#232a36;
+      --blue:#3B82F6;
+      --blue-600:#2563EB;
       --green:#22c55e;
       --radius:16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;scroll-behavior:smooth}
@@ -29,7 +35,7 @@
     .nav{position:sticky;top:0;z-index:50;background:rgba(14,17,23,.8);backdrop-filter: blur(10px);border-bottom:1px solid var(--line)}
     .nav .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
     .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#4f7cf8,#9aaefb);box-shadow:0 6px 18px #0008}
+    .logo{width:36px;height:36px;border-radius:6px;object-fit:contain;box-shadow:0 0 10px #0007}
     .title{font-family:Poppins,Inter,sans-serif;font-weight:700;letter-spacing:.3px}
     .menu{display:flex;gap:18px;flex-wrap:wrap}
     .menu a{padding:8px 10px;border-radius:999px;color:var(--muted)}
@@ -105,12 +111,14 @@
     @media (max-width:620px){.menu{display:none}}
   </style>
 </head>
+
 <body>
+
   <!-- NAV -->
   <nav class="nav">
     <div class="wrap inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img src="logo.png" alt="Macrobot Logo" class="logo">
         <div class="title">Macrobot</div>
       </div>
       <div class="menu">
@@ -133,7 +141,7 @@
     <div class="bg-rays"></div>
     <div class="wrap hero">
       <div class="card">
-        <div class="eyebrow">Design · Development · Automation</div>
+        <div class="eyebrow">DESIGN · DEVELOPMENT · AUTOMATION</div>
         <h1>Build intelligent digital products with confidence.</h1>
         <p class="lead">We ship fast, scalable, user-focused software — from product design to web/apps, automation and AI integration.</p>
         <div class="actions">
@@ -153,7 +161,7 @@
       <div class="about">
         <div class="kard">
           <div class="profile">
-            <img class="avatar" src="https://images.unsplash.com/photo-1603415526960-f7e0328d13fb?q=80&w=600&auto=format&fit=crop" alt="Founder portrait">
+            <img class="avatar" src="logo.png" alt="Adithya Prahalad">
             <div>
               <div style="font-weight:700;margin-bottom:6px">Adithya Prahalad — Founder</div>
               <div style="color:var(--muted)">Software development, automation, and product strategy.</div>
@@ -178,54 +186,12 @@
       <h2 class="h2">Services</h2>
       <p class="sub">End-to-end product design and development for startups and teams.</p>
       <div class="grid3">
-        <div class="service">
-          <div style="opacity:.8">01</div>
-          <h3>Web & App Development</h3>
-          <p>Fast, secure, and maintainable applications with modern tooling.</p>
-        </div>
-        <div class="service">
-          <div style="opacity:.8">02</div>
-          <h3>Automation & AI Integration</h3>
-          <p>Workflow automation, data pipelines, and ML-assisted features.</p>
-        </div>
-        <div class="service">
-          <div style="opacity:.8">03</div>
-          <h3>Product Design (UI/UX)</h3>
-          <p>Human-centered interfaces that improve conversion and retention.</p>
-        </div>
-        <div class="service">
-          <div style="opacity:.8">04</div>
-          <h3>Technical Consulting</h3>
-          <p>Architecture reviews, performance audits, and delivery planning.</p>
-        </div>
-        <div class="service">
-          <div style="opacity:.8">05</div>
-          <h3>Data Dashboards</h3>
-          <p>Clear, actionable analytics for operations and finance teams.</p>
-        </div>
-        <div class="service">
-          <div style="opacity:.8">06</div>
-          <h3>Investor Pitch Support</h3>
-          <p>Concise narratives and visuals that help you raise with confidence.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="work" class="section">
-    <div class="wrap">
-      <h2 class="h2">Recent Projects</h2>
-      <p class="sub">Representative work and concept studies (full case studies on request).</p>
-      <div class="grid2">
-        <figure class="work">
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600&auto=format&fit=crop" alt="Analytics dashboard">
-          <figcaption class="cap">Custom analytics dashboard</figcaption>
-        </figure>
-        <figure class="work">
-          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop" alt="Dev environment">
-          <figcaption class="cap">API-driven web platform</figcaption>
-        </figure>
+        <div class="service"><h3>Web & App Development</h3><p>Fast, secure, and maintainable applications with modern tooling.</p></div>
+        <div class="service"><h3>Automation & AI Integration</h3><p>Workflow automation, data pipelines, and ML-assisted features.</p></div>
+        <div class="service"><h3>Product Design (UI/UX)</h3><p>Human-centered interfaces that improve conversion and retention.</p></div>
+        <div class="service"><h3>Technical Consulting</h3><p>Architecture reviews, performance audits, and delivery planning.</p></div>
+        <div class="service"><h3>Data Dashboards</h3><p>Clear, actionable analytics for operations and finance teams.</p></div>
+        <div class="service"><h3>Investor Pitch Support</h3><p>Concise narratives and visuals that help you raise with confidence.</p></div>
       </div>
     </div>
   </section>
@@ -240,49 +206,6 @@
         <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span>
         <span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">AWS</span>
         <span class="chip">Tailwind</span><span class="chip">Figma</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ESTIMATOR -->
-  <section id="estimate" class="section">
-    <div class="wrap">
-      <h2 class="h2">Quick Project Estimate</h2>
-      <p class="sub">Get a ballpark figure instantly. We’ll refine after a short call.</p>
-      <div class="est">
-        <select id="etype" aria-label="Project type">
-          <option value="web">Web/App</option>
-          <option value="automation">Automation/AI</option>
-          <option value="dashboard">Dashboard</option>
-          <option value="consult">Consulting (ad-hoc)</option>
-        </select>
-        <input id="scope" type="number" min="1" max="10" value="3" aria-label="Scope (1–10)" placeholder="Scope (1–10)">
-        <input id="deadline" type="number" min="1" max="12" value="4" aria-label="Deadline in weeks" placeholder="Deadline (weeks)">
-        <input id="emailq" type="email" placeholder="Your email (optional)">
-        <div class="out" id="quote">Enter details to estimate.</div>
-      </div>
-      <div style="margin-top:10px;color:var(--muted);font-size:14px">This is an indicative estimate. Fixed quotes follow a detailed brief.</div>
-    </div>
-  </section>
-
-  <!-- PYTHON DEMO -->
-  <section class="section">
-    <div class="wrap">
-      <h2 class="h2">In-browser Python (Demo)</h2>
-      <p class="sub">A tiny interactive Python snippet running entirely in your browser (via Pyodide) — no servers required.</p>
-      <div class="kard" style="overflow:auto">
-        <pre id="pycode" style="margin:0;white-space:pre-wrap;color:#cbd5e1">
-# Example: simple cost calculator function
-def estimate(scope, weeks, base=400):
-    urgency = 1.2 if weeks &lt;= 4 else 1.0
-    return round(base * scope * urgency, 2)
-
-print("estimate(scope=3, weeks=4) ->", estimate(3,4))
-        </pre>
-        <div style="display:flex;gap:10px;margin-top:10px;align-items:center">
-          <button class="btn primary" id="runpy">Run Python</button>
-          <span id="pyout" style="color:var(--muted)"></span>
-        </div>
       </div>
     </div>
   </section>
@@ -306,8 +229,8 @@ print("estimate(scope=3, weeks=4) ->", estimate(3,4))
         <textarea name="message" placeholder="Short brief…" required></textarea>
         <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
           <button class="btn primary" type="submit">Send message</button>
-          <a class="btn" href="https://github.com/AdithyaPrahalad" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="https://github.com/AdithyaPrahalad" target="_blank">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a>
         </div>
       </form>
     </div>
@@ -315,57 +238,9 @@ print("estimate(scope=3, weeks=4) ->", estimate(3,4))
 
   <div class="footer">© <span id="year"></span> Macrobot. All rights reserved.</div>
 
-  <!-- JS -->
   <script>
-    // Quote estimator
-    (function(){
-      const T={ web:420, automation:520, dashboard:450, consult:85 };
-      const et=document.getElementById('etype');
-      const sc=document.getElementById('scope');
-      const dl=document.getElementById('deadline');
-      const out=document.getElementById('quote');
-      function calc(){
-        const type=et.value, scope=Math.max(1, +sc.value||1), weeks=Math.max(1, +dl.value||4);
-        if(type==='consult'){
-          out.innerHTML = "Consulting rate: <span class='ok'>£"+T.consult+"/hour</span>";
-          return;
-        }
-        const urgency = weeks<=4 ? 1.2 : 1.0;
-        const price = Math.round(T[type] * scope * urgency);
-        out.innerHTML = "Estimated project budget: <span class='ok'>£"+price+"</span>  •  Scope "+scope+"  •  Timeline "+weeks+" weeks" + (urgency>1 ? " (expedited)" : "");
-      }
-      ['change','input'].forEach(ev=>{
-        et.addEventListener(ev,calc); sc.addEventListener(ev,calc); dl.addEventListener(ev,calc);
-      });
-      calc();
-      document.getElementById('year').textContent = new Date().getFullYear();
-    })();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
-  <!-- Pyodide for Python-in-browser demo -->
-  <script>
-    (async function(){
-      const runBtn = document.getElementById('runpy');
-      const out = document.getElementById('pyout');
-      if(!runBtn) return;
-      runBtn.addEventListener('click', async ()=>{
-        try{
-          out.textContent = 'Loading Python runtime…';
-          if(!window.loadPyodide){
-            const s = document.createElement('script');
-            s.src = 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js';
-            document.head.appendChild(s);
-            await new Promise(r=>{s.onload=r});
-          }
-          const pyodide = await loadPyodide();
-          const code = document.getElementById('pycode').textContent;
-          const result = await pyodide.runPythonAsync(code);
-          out.textContent = 'Done. Check console above for output.';
-        }catch(e){
-          out.textContent = 'Python error: '+e.message;
-        }
-      });
-    })();
-  </script>
 </body>
 </html>
