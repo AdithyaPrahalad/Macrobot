@@ -1,220 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Macrobot | Engineering Intelligence</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- META -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Macrobot • Engineering Intelligence</title>
+  <meta name="description" content="Macrobot — Web & Software, Robotics & Automation, AI & Data Integration. Engineering ideas into intelligent systems." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <!-- FAVICON (inline SVG data URI) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%236C63FF'/%3E%3Cstop offset='1' stop-color='%2300BFFF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect rx='56' ry='56' width='256' height='256' fill='%23080A0F'/%3E%3Cpath d='M58 168V88h20l22 40 22-40h20v80h-18v-49l-24 43h-4l-24-43v49H58z' fill='url(%23g)'/%3E%3Cpath d='M206 96a10 10 0 110 20 10 10 0 010-20zm0 44a10 10 0 110 20 10 10 0 010-20zM162 68a8 8 0 110 16 8 8 0 010-16zM120 42a6 6 0 110 12 6 6 0 010-12z' fill='%2344ccff' opacity='.85'/%3E%3C/svg%3E" />
+  <!-- FONTS + ICONS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- STYLES -->
   <style>
-    :root {
-      --bg-dark: #0a0a0a;
-      --bg-light: #f9f9f9;
-      --text-dark: #ffffff;
-      --text-light: #111111;
-      --accent1: #6C63FF;
-      --accent2: #00BFFF;
+    :root{
+      --bg: #0a0b10;
+      --panel: #0f111a;
+      --text: #e8ebf0;
+      --muted: #a4adbd;
+      --line: #1b1e2a;
+      --accentA: #6C63FF; /* violet */
+      --accentB: #00BFFF; /* cyan */
+      --glow: 0 0 24px rgba(108,99,255,.45), 0 0 32px rgba(0,191,255,.3);
     }
-
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-dark);
-      transition: background 0.5s, color 0.5s;
-      overflow-x: hidden;
+    body.light{
+      --bg:#f7f8fb; --panel:#ffffff; --text:#0e1220; --muted:#4a5568; --line:#e8edf5;
+      --glow: 0 0 16px rgba(108,99,255,.25), 0 0 18px rgba(0,191,255,.2);
     }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 50px;
-      position: fixed;
-      width: 100%;
-      z-index: 999;
-      backdrop-filter: blur(15px);
-      background: rgba(0, 0, 0, 0.4);
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+      background:var(--bg); color:var(--text); overflow-x:hidden; transition:background .5s,color .5s;
     }
-
-    header h1 {
-      font-size: 1.8rem;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
-      letter-spacing: 2px;
+    /* Header */
+    .nav{
+      position:fixed; inset:0 auto auto 0; width:100%; height:64px; display:flex; align-items:center; justify-content:space-between;
+      padding:0 22px; z-index:10; backdrop-filter:saturate(140%) blur(12px);
+      background:linear-gradient(to right, rgba(10,11,16,.75), rgba(10,11,16,.25));
+      border-bottom:1px solid var(--line);
     }
-
-    .toggle-btn {
-      border: none;
-      background: transparent;
-      color: var(--text-dark);
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: transform 0.3s;
+    .brand{
+      font-weight:800; letter-spacing:.12em; font-size:1.2rem;
+      background:linear-gradient(90deg,var(--accentA),var(--accentB)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
     }
-    .toggle-btn:hover { transform: rotate(25deg); }
-
-    section {
-      padding: 120px 15%;
+    .nav a{color:var(--muted); text-decoration:none; font-weight:600; margin:0 10px;}
+    .nav a:hover{color:var(--text)}
+    .toggle{
+      border:1px solid var(--line); background:transparent; color:var(--text); border-radius:10px; padding:8px 12px; cursor:pointer;
+      display:flex; align-items:center; gap:8px; font-weight:600;
     }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
+    /* Sections */
+    section{padding:100px 8vw 70px}
+    .hero{position:relative; display:grid; place-items:center; text-align:center; min-height:100vh;}
+    .hero h1{
+      font-size: clamp(2.2rem, 5.6vw, 4.6rem);
+      margin:0 0 14px;
+      line-height:1.05;
+      background:linear-gradient(90deg,var(--accentA),var(--accentB));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      filter: drop-shadow(0 10px 24px rgba(0,191,255,.12));
     }
-
-    .hero h2 {
-      font-size: 3.2rem;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 15px;
+    .subtitle{max-width:760px; margin:0 auto; color:var(--muted); font-size:1.05rem}
+    .cta{
+      margin-top:28px; display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:14px; font-weight:700;
+      color:#fff; text-decoration:none; background:linear-gradient(90deg,var(--accentA),var(--accentB)); box-shadow:var(--glow);
+      transform: translateZ(0); transition: transform .25s, box-shadow .25s;
     }
-
-    .hero p {
-      max-width: 650px;
-      font-size: 1.2rem;
-      color: #ccc;
+    .cta:hover{transform:translateY(-2px); box-shadow:0 0 34px rgba(108,99,255,.55), 0 0 44px rgba(0,191,255,.4)}
+    .neon-frame{
+      margin-top:26px; display:inline-block; padding:10px 16px; border-radius:12px;
+      border:1px solid rgba(108,99,255,.35); background:linear-gradient(180deg,rgba(108,99,255,.08),rgba(0,191,255,.06));
+      box-shadow: inset 0 0 40px rgba(108,99,255,.09), inset 0 0 40px rgba(0,191,255,.06);
+      font: 600 12px/1 JetBrains Mono,monospace; color:var(--muted)
     }
-
-    .btn {
-      margin-top: 30px;
-      padding: 12px 30px;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      color: white;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: transform 0.3s, box-shadow 0.3s;
+    /* Neural canvas backdrop */
+    #neural{
+      position:absolute; inset:0; z-index:-1; opacity:.9;
     }
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 20px var(--accent1);
+    /* Floating icons */
+    .floatIcon{
+      position:absolute; font-size:28px; color:rgba(0,191,255,.65); filter:drop-shadow(0 0 8px rgba(0,191,255,.45));
+      animation: drift 18s linear infinite;
     }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
+    .floatIcon.alt{ color:rgba(108,99,255,.75); filter:drop-shadow(0 0 8px rgba(108,99,255,.5)); animation-duration:22s; }
+    @keyframes drift{
+      from{ transform: translateY(0) translateX(0) }
+      50%{ transform: translateY(-16px) translateX(8px) }
+      to{ transform: translateY(0) translateX(0) }
     }
-
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 15px;
-      padding: 30px;
-      transition: transform 0.3s, box-shadow 0.3s;
+    /* Section titles */
+    .title{font-size: clamp(1.6rem, 3vw, 2.2rem); margin:0 0 22px;}
+    .muted{color:var(--muted)}
+    /* Cards grid */
+    .grid{
+      display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:12px;
     }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px var(--accent1);
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line); border-radius:18px; padding:22px; position:relative; overflow:hidden;
+      transition:transform .25s, box-shadow .25s, border-color .25s;
     }
-
-    .card i {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      color: var(--accent2);
+    .card:hover{ transform:translateY(-4px); border-color:rgba(108,99,255,.45); box-shadow:var(--glow); }
+    .card i{ font-size:28px; background:linear-gradient(90deg,var(--accentA),var(--accentB)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .card h3{ margin:12px 0 6px }
+    .chip{
+      position:absolute; top:14px; right:14px; font:600 11px/1 JetBrains Mono,monospace; color:var(--muted);
+      border:1px dashed rgba(108,99,255,.35); border-radius:999px; padding:6px 10px; background:rgba(108,99,255,.06);
     }
-
-    .card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
+    /* About */
+    .about{
+      display:grid; grid-template-columns:1.2fr .8fr; gap:32px; align-items:center;
     }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      font-size: 0.9rem;
-      color: #aaa;
-      border-top: 1px solid rgba(255,255,255,0.1);
+    .about .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line); border-radius:20px; padding:22px;
     }
-
-    /* Light Mode */
-    body.light {
-      background: var(--bg-light);
-      color: var(--text-light);
+    .mono{ font-family: "JetBrains Mono", monospace; font-size:.95rem }
+    /* Contact */
+    .contact{
+      display:grid; grid-template-columns:1fr 1fr; gap:22px;
     }
-    body.light header {
-      background: rgba(255, 255, 255, 0.5);
+    .btn-neutral{
+      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; border:1px solid var(--line);
+      color:var(--text); text-decoration:none; transition: border-color .25s, transform .25s; background:rgba(255,255,255,.02);
     }
-    body.light .card {
-      background: rgba(0,0,0,0.03);
-      border: 1px solid rgba(0,0,0,0.1);
-    }
-    body.light footer {
-      border-color: rgba(0,0,0,0.1);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up {
-      animation: fadeUp 1s ease forwards;
+    .btn-neutral:hover{ border-color:rgba(0,191,255,.45); transform:translateY(-2px) }
+    /* Reveal on scroll */
+    .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.show{ opacity:1; transform:none }
+    /* Footer */
+    footer{ padding:60px 8vw; color:var(--muted); border-top:1px solid var(--line); text-align:center }
+    /* Responsive */
+    @media (max-width: 980px){
+      .about{ grid-template-columns:1fr; }
+      .contact{ grid-template-columns:1fr; }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>MACROBOT</h1>
-    <button class="toggle-btn" id="themeToggle"><i class="ri-moon-line"></i></button>
-  </header>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="brand">MACROBOT</div>
+    <div>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button id="themeToggle" class="toggle" title="Toggle light/dark"><i class="ri-moon-line"></i><span class="hide-sm"> Theme</span></button>
+    </div>
+  </nav>
 
-  <section class="hero fade-up">
-    <h2>Engineering Ideas into Intelligent Systems</h2>
-    <p>Bridging robotics, automation, and artificial intelligence to craft real-world innovations that redefine technology.</p>
-    <button class="btn" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
-      Explore Our Expertise
-    </button>
-  </section>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <canvas id="neural"></canvas>
+    <!-- floating icons -->
+    <i class="ri-cpu-line floatIcon" style="top:24%;left:12%"></i>
+    <i class="ri-brain-line floatIcon alt" style="top:16%;right:10%"></i>
+    <i class="ri-line-chart-line floatIcon" style="bottom:18%;left:18%"></i>
+    <i class="ri-chip-line floatIcon alt" style="bottom:20%;right:16%"></i>
 
-  <section id="services">
-    <h2 class="fade-up">Our Expertise</h2>
-    <div class="grid fade-up">
-      <div class="card"><i class="ri-code-box-line"></i><h3>Web & Software Development</h3><p>Designing and developing efficient, modern websites and applications that blend performance with aesthetics.</p></div>
-      <div class="card"><i class="ri-cpu-line"></i><h3>Robotics & Automation</h3><p>Building intelligent, sensor-driven systems powered by mechatronics and AI for smarter living and operations.</p></div>
-      <div class="card"><i class="ri-brain-line"></i><h3>AI & Data Integration</h3><p>Connecting algorithms, analytics, and automation for seamless decision-making systems.</p></div>
+    <div class="reveal show">
+      <h1>Engineering Ideas into <br/> Intelligent Systems</h1>
+      <p class="subtitle">
+        Robotics • Automation • AI — we design high-performance software and sensor-driven systems that turn bold concepts into working technology.
+      </p>
+      <a class="cta" href="#services"><i class="ri-rocket-line"></i> Explore Our Expertise</a>
+      <div class="neon-frame">macrobot.init() → status: <span style="color:#79ffe1">READY</span></div>
     </div>
   </section>
 
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 class="title reveal">Our Expertise</h2>
+    <p class="muted reveal">Select, modular services that scale from MVPs to production systems.</p>
+    <div class="grid">
+      <div class="card reveal">
+        <span class="chip">web • apps</span>
+        <i class="ri-code-box-line"></i>
+        <h3>Web & Software Development</h3>
+        <p class="muted">Modern, fast frontends and robust backends. Clean UI/UX, API design, dashboards, and automation tools.</p>
+      </div>
+      <div class="card reveal">
+        <span class="chip">sensors • motion</span>
+        <i class="ri-robot-2-line"></i>
+        <h3>Robotics & Automation</h3>
+        <p class="muted">Microcontrollers, motor drivers, sensor fusion. Control loops, telemetry, and reliable firmware.</p>
+      </div>
+      <div class="card reveal">
+        <span class="chip">ml • analytics</span>
+        <i class="ri-brain-line"></i>
+        <h3>AI & Data Integration</h3>
+        <p class="muted">Classical ML to modern inference pipelines. Data acquisition, preprocessing, and actionable analytics.</p>
+      </div>
+      <div class="card reveal">
+        <span class="chip">cloud • ops</span>
+        <i class="ri-cloud-line"></i>
+        <h3>Systems & Deployment</h3>
+        <p class="muted">Cloud setup, CI/CD, monitoring. From rapid prototypes to reliable, maintainable services.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
   <section id="about">
-    <h2 class="fade-up">About Macrobot</h2>
-    <p class="fade-up" style="max-width: 700px;">
-      Founded by <strong>Adithya Prahalad</strong>, Macrobot merges creativity, robotics, and artificial intelligence to design solutions that redefine automation. 
-      We craft intelligent systems that evolve — for individuals, startups, and enterprises shaping the future of technology.
-    </p>
+    <h2 class="title reveal">About Macrobot</h2>
+    <div class="about">
+      <div class="panel reveal">
+        <p class="muted">
+          Founded by <strong>Adithya Prahalad</strong>, Macrobot unites software engineering, robotics, and human-centered design.
+          We build with clarity: define the loop, choose the signals, close the gap between idea and implementation.
+        </p>
+        <div class="mono" style="margin-top:14px;">
+<pre style="margin:0; white-space:pre-wrap; color:var(--muted)">
+# Operating Principles
+1. Measure → Model → Make
+2. Latency matters. Simplicity scales.
+3. Document everything. Automate the rest.</pre>
+        </div>
+      </div>
+      <div class="panel reveal">
+        <h3 style="margin-top:0">Capabilities</h3>
+        <ul class="muted">
+          <li>Frontend (HTML/CSS/JS), Dashboards, Design Systems</li>
+          <li>Java/Python/Node, REST/WS, SQLite/Postgres</li>
+          <li>Arduino/RPi, I2C/SPI/UART, PWM/Encoders</li>
+          <li>ML integration, data pipelines, telemetry</li>
+        </ul>
+        <a class="btn-neutral" href="#contact"><i class="ri-send-plane-2-line"></i> Start a project</a>
+      </div>
+    </div>
   </section>
 
-  <section id="contact" style="text-align:center;">
-    <h2 class="fade-up">Let’s Build the Future Together</h2>
-    <p class="fade-up">Get in touch for collaborations, projects, or innovative tech solutions.</p>
-    <a href="mailto:macrobot.tech@gmail.com" class="btn">Contact Macrobot</a>
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="title reveal">Let’s Build the Future</h2>
+    <p class="muted reveal">Drop a note with what you want to build — we’ll respond with a clean plan and timeline.</p>
+    <div class="contact">
+      <a class="btn-neutral reveal" href="mailto:macrobot.tech@gmail.com"><i class="ri-mail-line"></i> macrobot.tech@gmail.com</a>
+      <a class="btn-neutral reveal" href="https://github.com/AdithyaPrahalad" target="_blank" rel="noopener"><i class="ri-github-line"></i> GitHub Portfolio</a>
+    </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    © <span id="year"></span> Macrobot | Designed by Adithya Prahalad
+    © <span id="year"></span> Macrobot • Designed by Adithya Prahalad
   </footer>
 
+  <!-- SCRIPTS -->
   <script>
-    // Light/Dark toggle
-    const toggleBtn = document.getElementById('themeToggle');
-    const body = document.body;
-    toggleBtn.addEventListener('click', () => {
-      body.classList.toggle('light');
-      toggleBtn.innerHTML = body.classList.contains('light') ? '<i class="ri-sun-line"></i>' : '<i class="ri-moon-line"></i>';
+    // Light/Dark theme toggle
+    const toggle = document.getElementById('themeToggle');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && prefersLight)){
+      document.body.classList.add('light'); toggle.innerHTML = '<i class="ri-sun-line"></i><span> Theme</span>';
+    }
+    toggle.addEventListener('click', ()=>{
+      document.body.classList.toggle('light');
+      const light = document.body.classList.contains('light');
+      toggle.innerHTML = light ? '<i class="ri-sun-line"></i><span> Theme</span>' : '<i class="ri-moon-line"></i><span> Theme</span>';
+      localStorage.setItem('theme', light ? 'light' : 'dark');
     });
 
-    // Set year
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+    }, { threshold:.12 });
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Parallax effect for hero floating icons
+    const floats = document.querySelectorAll('.floatIcon');
+    window.addEventListener('mousemove', (e)=>{
+      const cx = window.innerWidth/2, cy = window.innerHeight/2;
+      const dx = (e.clientX - cx)/cx, dy = (e.clientY - cy)/cy;
+      floats.forEach((el,i)=>{
+        const depth = (i%2? 6:10);
+        el.style.transform = `translate(${dx*depth}px, ${dy*depth}px)`;
+      });
+    });
+
+    // Neural Network Canvas Background
+    (function(){
+      const c = document.getElementById('neural');
+      const ctx = c.getContext('2d');
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let w, h, nodes;
+
+      function resize(){
+        w = c.offsetWidth; h = c.offsetHeight;
+        c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+        // node count proportional to area (capped for perf)
+        const target = Math.min(140, Math.floor((w*h)/16000));
+        nodes = Array.from({length: target}).map(()=>({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          vx:(Math.random()-0.5)*0.35,
+          vy:(Math.random()-0.5)*0.35,
+        }));
+      }
+      function step(){
+        ctx.clearRect(0,0,w,h);
+        // gradient background haze
+        const g = ctx.createLinearGradient(0,0,w,h);
+        g.addColorStop(0,'rgba(108,99,255,.06)');
+        g.addColorStop(1,'rgba(0,191,255,.06)');
+        ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+
+        // update & draw nodes
+        for(let i=0;i<nodes.length;i++){
+          const n = nodes[i];
+          n.x += n.vx; n.y += n.vy;
+          if(n.x<0||n.x>w) n.vx*=-1;
+          if(n.y<0||n.y>h) n.vy*=-1;
+
+          // connections
+          for(let j=i+1;j<nodes.length;j++){
+            const m = nodes[j];
+            const dx = n.x-m.x, dy = n.y-m.y;
+            const dist = Math.hypot(dx,dy);
+            if(dist<140){
+              const a = 1 - (dist/140);
+              ctx.strokeStyle = `rgba(120,210,255,${a*.25})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(m.x,m.y); ctx.stroke();
+            }
+          }
+          // node
+          ctx.fillStyle = 'rgba(108,99,255,.55)';
+          ctx.beginPath(); ctx.arc(n.x,n.y,1.6,0,Math.PI*2); ctx.fill();
+        }
+        requestAnimationFrame(step);
+      }
+      window.addEventListener('resize', resize, {passive:true});
+      resize(); step();
+    })();
   </script>
 </body>
 </html>
