@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adithyaprahalad.github.io/Macrobot/sitemap.xml
