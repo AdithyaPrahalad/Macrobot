@@ -7,21 +7,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <!-- TITLE / SEO -->
-  <title>Macrobot • Robotics, Automation & AI Systems</title>
-  <meta name="description" content="Macrobot — robotics, automation and intelligent software systems. Student-led engineering venture building real prototypes, documentation, and deployable tools." />
-  <meta name="robots" content="index,follow" />
+  <title>Macrobot • Robotics, Automation & AI Systems | Adithya Prahalad Vissapragada</title>
+  <meta name="description" content="Macrobot is a student-led engineering venture by Adithya Prahalad Vissapragada (Adithya Prahalad / Adithya Vissapragada) building robotics, automation, AI systems, and deployable software tools." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="author" content="Adithya Prahalad Vissapragada" />
+  <meta name="keywords" content="Macrobot, macrobot, macrobot tech, Adithya, Adithya Prahalad, Adithya Vissapragada, Adithya Prahalad Vissapragada, robotics, automation, AI systems, software development, engineering venture" />
   <link rel="canonical" href="https://adithyaprahalad.github.io/Macrobot/" />
+
+  <!-- OPTIONAL: Google Search Console verification (paste your code content inside content="...") -->
+  <!-- <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" /> -->
 
   <!-- SOCIAL PREVIEW (Open Graph / Twitter) -->
   <meta property="og:title" content="Macrobot • Robotics, Automation & AI Systems" />
-  <meta property="og:description" content="Student-led engineering venture building robotics, automation and intelligent software systems — with public build logs and prototypes." />
+  <meta property="og:description" content="Macrobot — student-led engineering venture by Adithya Prahalad Vissapragada building robotics, automation and intelligent software systems with public build logs and prototypes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://adithyaprahalad.github.io/Macrobot/" />
-  <!-- If you add a real image later, replace this with a hosted PNG/JPG -->
   <meta property="og:image" content="https://adithyaprahalad.github.io/Macrobot/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Macrobot • Robotics, Automation & AI Systems" />
-  <meta name="twitter:description" content="Student-led engineering venture building robotics, automation and intelligent software systems — with public build logs and prototypes." />
+  <meta name="twitter:description" content="Macrobot — student-led engineering venture by Adithya Prahalad Vissapragada building robotics, automation and intelligent software systems." />
   <meta name="twitter:image" content="https://adithyaprahalad.github.io/Macrobot/og.png" />
 
   <meta name="theme-color" content="#0a0a0a" />
@@ -144,9 +148,7 @@
     }
 
     /* Neural canvas backdrop */
-    #neural{
-      position:absolute; inset:0; z-index:-1; opacity:.9;
-    }
+    #neural{ position:absolute; inset:0; z-index:-1; opacity:.9; }
 
     /* Floating icons */
     .floatIcon{
@@ -208,9 +210,7 @@
     .mono{ font-family: "JetBrains Mono", monospace; font-size:.95rem }
 
     /* Build log */
-    .log{
-      display:grid; gap:14px; margin-top:14px;
-    }
+    .log{ display:grid; gap:14px; margin-top:14px; }
     .log-item{
       padding:18px;
       border-radius:16px;
@@ -229,9 +229,7 @@
     }
 
     /* Contact */
-    .contact{
-      display:grid; grid-template-columns:1fr 1fr; gap:22px;
-    }
+    .contact{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
     .btn-neutral{
       display:inline-flex; align-items:center; gap:10px; padding:10px 14px;
       border-radius:12px; border:1px solid var(--line);
@@ -252,12 +250,21 @@
     /* Focus styles for keyboard users */
     a:focus{ outline:none; box-shadow: var(--glow); }
 
+    /* Utility: visually hidden (SEO-safe, a11y-safe) */
+    .sr-only{
+      position:absolute !important;
+      width:1px; height:1px;
+      padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0);
+      white-space:nowrap; border:0;
+    }
+
     /* Responsive */
     @media (max-width: 980px){
       .about{ grid-template-columns:1fr; }
       .contact{ grid-template-columns:1fr; }
       .nav{ padding:0 14px; }
-      .nav a{ display:none; } /* keep header clean on mobile */
+      .nav a{ display:none; }
       .nav .nav-links{ gap:10px; }
     }
 
@@ -268,31 +275,38 @@
     }
   </style>
 
-  <!-- Structured data (basic Organization/Person) -->
+  <!-- Structured data: Organization + Person + alternate names + links -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Macrobot",
-    "url": "https://adithyaprahalad.github.io/Macrobot/",
-    "email": "macrobot.tech@gmail.com",
-    "founder": {
-      "@type": "Person",
-      "name": "Adithya Prahalad"
-    }
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"Organization",
+        "@id":"https://adithyaprahalad.github.io/Macrobot/#org",
+        "name":"Macrobot",
+        "alternateName":["macrobot","Macrobot Tech","macrobot tech"],
+        "url":"https://adithyaprahalad.github.io/Macrobot/",
+        "email":"macrobot.tech@gmail.com",
+        "founder":{"@id":"https://adithyaprahalad.github.io/Macrobot/#person"}
+      },
+      {
+        "@type":"Person",
+        "@id":"https://adithyaprahalad.github.io/Macrobot/#person",
+        "name":"Adithya Prahalad Vissapragada",
+        "alternateName":[
+          "Adithya",
+          "Adithya Prahalad",
+          "Adithya Vissapragada",
+          "Adithya Prahalad Vissaprada"
+        ],
+        "url":"https://adithyaprahalad.github.io/Macrobot/",
+        "sameAs":[
+          "https://github.com/AdithyaPrahalad"
+        ]
+      }
+    ]
   }
   </script>
-
-  <!-- OPTIONAL: Google Analytics (replace G-XXXXXXXXXX) -->
-  <!--
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-  -->
 </head>
 
 <body>
@@ -326,8 +340,15 @@
       <div class="reveal show">
         <h1>Engineering Ideas into <br/> Intelligent Systems</h1>
 
+        <!-- SEO-safe identity line (visible to users, helps Google connect names) -->
         <p class="subtitle">
-          Robotics • Automation • AI — building practical software and sensor-driven systems that turn bold concepts into working technology.
+          Macrobot — a student-led engineering venture by <strong>Adithya Prahalad Vissapragada</strong> (Adithya Prahalad / Adithya Vissapragada).
+          Robotics • Automation • AI • Software Systems.
+        </p>
+
+        <!-- Additional synonyms (screen-reader only; not spam, just clarity) -->
+        <p class="sr-only">
+          Macrobot, macrobot, macrobot tech. Adithya, Adithya Prahalad, Adithya Vissapragada, Adithya Prahalad Vissapragada.
         </p>
 
         <div class="cta-row">
@@ -378,7 +399,7 @@
       </div>
     </section>
 
-    <!-- BUILD LOG (this is what gives you reach) -->
+    <!-- BUILD LOG -->
     <section id="buildlog" aria-label="Build log">
       <h2 class="title reveal">Build Log</h2>
       <p class="muted reveal">
@@ -387,7 +408,6 @@
 
       <div class="panel reveal">
         <div class="log">
-          <!-- Replace these with real entries weekly. -->
           <div class="log-item">
             <div class="log-top">
               <strong>Week 1 — Project kickoff & scope</strong>
@@ -406,7 +426,6 @@
             </div>
             <p class="muted" style="margin:10px 0 0;">
               Planned: capture sensor data, store to CSV, basic visualization and sanity checks.
-              This will prove Python usage beyond certificates.
             </p>
           </div>
 
@@ -433,7 +452,8 @@
       <div class="about">
         <div class="panel reveal">
           <p class="muted">
-            Founded by <strong>Adithya Prahalad</strong>, Macrobot combines software engineering, robotics, and automation.
+            Founded by <strong>Adithya Prahalad Vissapragada</strong> (also known as Adithya Prahalad / Adithya Vissapragada),
+            Macrobot combines software engineering, robotics, and automation.
             The mission is simple: build real systems, document the process, and continuously improve execution.
           </p>
 
@@ -486,7 +506,7 @@
 
   <!-- FOOTER -->
   <footer>
-    © <span id="year"></span> Macrobot • Built by Adithya Prahalad
+    © <span id="year"></span> Macrobot • Built by Adithya Prahalad Vissapragada
   </footer>
 
   <!-- SCRIPTS -->
@@ -551,7 +571,6 @@
         c.width = w * dpr; c.height = h * dpr;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-        // node count proportional to area (capped for perf)
         const target = Math.min(120, Math.floor((w * h) / 18000));
         nodes = Array.from({ length: target }).map(() => ({
           x: Math.random() * w,
@@ -600,13 +619,7 @@
 
       window.addEventListener('resize', resize, { passive: true });
       resize();
-
-      // If reduced motion, render once instead of animating
-      if (reduceMotion) {
-        step(); // one frame is fine
-      } else {
-        step();
-      }
+      step();
     })();
   </script>
 </body>
